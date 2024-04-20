@@ -1,0 +1,71 @@
+# Online Web Game Boilerplate
+
+# Setup
+You’ll need to install a few things before you have a working copy of the project.
+
+## Requirements:
+
+- node >= 18.1.2,
+- npm >= 10.5.2
+
+## 1. Clone this repo:
+
+Navigate into your workspace directory.
+
+Run:
+
+```git clone https://github.com/flobbun/online-web-game-boilerplate.git```
+
+## 2. Install dependencies:
+
+Navigate to the cloned repo’s directory.
+
+Run:
+
+```npm install```
+
+## 3. Run both, client and server:
+
+```npm run dev```
+
+or run them separately:
+
+```npm run client```
+
+```npm run server```
+
+## Build for deployment:
+
+Run:
+
+```npm run deploy```
+
+This will optimize and minimize the compiled bundle.
+
+## Getting started
+
+Navigate to [http://localhost:4200](http://localhost:4200) to see your project in the browser.
+
+### What’s inside?
+
+Two apps, one for the client and one for the server.
+
+The client app is a simple react app that connects to the server via websockets.
+
+The server app is a simple node.js app that uses express.js.
+
+Both client and server use [colyseus](https://colyseus.io/) for the websocket communication and game state management.
+
+In the client app you can find a simple example of how to use the colyseus client to connect to the server and how to handle the game state.
+
+We use [zustand](https://zustand-demo.pmnd.rs/) for the client state management.
+
+The monorepo also has a small library to save types and entities, which can be shared between the client and the server.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Contributing
+
+If you want to contribute to this project and make it better, your help is very welcome.
