@@ -1,5 +1,5 @@
-import { Room, Client, ClientArray } from "colyseus";
-import { GameState, Player, EventTypes } from "@common";
+import { EventTypes, GameState } from "@common";
+import { Client, ClientArray, Room } from "colyseus";
 import { Colors, colorize, log } from "../lib/log";
 
 export class GameRoom extends Room<GameState> {
@@ -9,27 +9,27 @@ export class GameRoom extends Room<GameState> {
   onCreate() {
     this.setState(new GameState());
 
-    this.onMessage(EventTypes.INCREASE_SCORE, (client, cardId) => this.onIncreaseScore(client, this.state));
+    this.onMessage(EventTypes.INCREASE_SCORE, (client) => this.onIncreaseScore(client, this.state));
   }
 
-  onJoin(client: Client, { username }: { username: string }) {
-    const player = new Player();
-    player.id = client.sessionId;
-    this.state.players.set(client.sessionId, player);
-    log(`Player ${player.id} has joined`);
+  onJoin({ sessionId }: Client) {
+    this.state.addPlayer(sessionId);
+    log(`Player ${sessionId} has joined`);
   }
 
-  onLeave(client: Client<this["clients"] extends ClientArray<infer U, any> ? U : never, this["clients"] extends ClientArray<infer _, infer U> ? U : never>, consented?: boolean): void | Promise<any> {
-    this.state.players.delete(client.sessionId);
+  onLeave({ sessionId }: Client<this["clients"] extends ClientArray<infer U, any> ? U : never, this["clients"] extends ClientArray<infer _, infer U> ? U : never>, consented?: boolean): void | Promise<any> {
+    this.state.removePlayer(sessionId);
+    log(`Player ${sessionId} has left`);
   }
 
   /*±±±±± Custom events ±±±±±*/
 
-  onIncreaseScore(client: Client, state: GameState) {
-    const player = state.players.get(client.sessionId);
-    if (!player) return;
+  onIncreaseScore({ sessionId }: Client, state: GameState) {
+    if (!state.hasPlayer(sessionId)) return;
+
+    const player = state.getPlayer(sessionId);
 
     player.increaseScore();
-    log(`Player ${player.id} has increased score to ${colorize(player.score, Colors.YELLOW)}`);
+    log(`Player ${sessionId} has increased score to ${colorize(player.score, Colors.YELLOW)}`);
   }
 }

@@ -1,3 +1,4 @@
+import { EventTypes } from "@common";
 import { useGameStore } from "../stores/game.store";
 
 export default class GameScene extends Phaser.Scene {
@@ -5,14 +6,13 @@ export default class GameScene extends Phaser.Scene {
         super('game');
     }
 
+    increaseScore() {
+        useGameStore.getState().room?.send(EventTypes.INCREASE_SCORE);
+    }
+
     create() {
         useGameStore.subscribe(this.stateUpdate.bind(this));
-
-        const game = this.add.text(100, 100, 'Click me!');
-        game.setInteractive();
-        game.on('pointerdown', () => {
-            useGameStore.getState().incrementScore();
-        });
+        ((this.add.text(100, 100, 'Click me (Game)')).setInteractive()).on('pointerdown', this.increaseScore);
     }
 
     stateUpdate() {
