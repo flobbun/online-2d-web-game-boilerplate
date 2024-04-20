@@ -52,9 +52,9 @@ Navigate to [http://localhost:4200](http://localhost:4200) to see your project i
 
 Run:
 
-```npm run deploy```
+```npm run build```
 
-This will optimize and minimize the compiled bundle.
+This will create a `dist` folder in the root directory of the project with the client and server build files.
 
 ## What’s inside?
 

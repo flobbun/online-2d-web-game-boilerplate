@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nx run-many --target=serve -p client server --parallel=2",
     "client:serve": "nx run client:serve",
-    "server:serve": "nx run server:serve"
+    "server:serve": "nx run server:serve",
+    "build": "nx run-many --target=build -p client server --parallel=2"
   },
   "private": true,
   "dependencies": {
