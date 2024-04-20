@@ -3,12 +3,12 @@
 # Setup
 You’ll need to install a few things before you have a working copy of the project.
 
-## Requirements:
+### Requirements:
 
 - node >= 18.1.2,
 - npm >= 10.5.2
 
-## 1. Clone this repo:
+### 1. Clone this repo:
 
 Navigate into your workspace directory.
 
@@ -16,7 +16,7 @@ Run:
 
 ```git clone https://github.com/flobbun/online-web-game-boilerplate.git```
 
-## 2. Install dependencies:
+### 2. Install dependencies:
 
 Navigate to the cloned repo’s directory.
 
@@ -24,7 +24,17 @@ Run:
 
 ```npm install```
 
-## 3. Run both, client and server:
+### 3. Create a .env file:
+
+Both client and server folders have a `.env.example` with the necessary environment variables to work, you'll need to make a copy of them and rename it to `.env`.
+
+Run the following commands in the root directory of the project:
+
+```cp apps/client/.env.example apps/client/.env```
+
+```cp apps/server/.env.example apps/server/.env```
+
+### 4. Run both, client and server:
 
 ```npm run dev```
 
@@ -34,7 +44,11 @@ or run them separately:
 
 ```npm run server```
 
-## Build for deployment:
+And that's it! You should see the client and server running in your terminal.
+
+Navigate to [http://localhost:4200](http://localhost:4200) to see your project in the browser.
+
+### Build for deployment:
 
 Run:
 
@@ -42,11 +56,7 @@ Run:
 
 This will optimize and minimize the compiled bundle.
 
-## Getting started
-
-Navigate to [http://localhost:4200](http://localhost:4200) to see your project in the browser.
-
-### What’s inside?
+## What’s inside?
 
 Two apps, one for the client and one for the server.
 
