@@ -9,13 +9,12 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/apps/client',
 
   server: {
-    port: 4200,
-    host: 'localhost',
-  },
-
-  preview: {
-    port: 4300,
-    host: 'localhost',
+    watch: {
+     usePolling: true,
+    },
+    host: true,
+    strictPort: true,
+    port: 8080,
   },
 
   resolve: {
