@@ -56,6 +56,12 @@ Run:
 
 This will create a `dist` folder in the root directory of the project with the client and server build files.
 
+### Run on a docker container:
+
+After building the project, you can run it on a docker.
+
+```docker-compose up```
+
 ## What’s inside?
 
 Two apps, one for the client and one for the server.
